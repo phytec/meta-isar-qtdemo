@@ -1,0 +1,10 @@
+= Yogurt Isar Meta Layer
+
+This is custom distribution layer based on Isar for PHYTEC Boards.
+
+.Supported images
+* phytec-headless-image
+* phytec-qt5demo-image
+
+.Dependencies
+This layer depends on meta-isar-phytec.

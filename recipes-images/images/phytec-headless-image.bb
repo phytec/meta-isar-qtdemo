@@ -20,3 +20,5 @@ IMAGE_INSTALL += " \
 IMAGE_PREINSTALL += " \
     tzdata \
 "
+
+require common.inc

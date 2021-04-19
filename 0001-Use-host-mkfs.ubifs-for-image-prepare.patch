@@ -1,0 +1,29 @@
+From aa89ae6e26a2b6f59793a502307781dcf48110da Mon Sep 17 00:00:00 2001
+From: Anton Mikanovich <amikan@ilbers.de>
+Date: Mon, 19 Apr 2021 14:18:25 +0200
+Subject: [PATCH 1/2] Use host mkfs.ubifs for image prepare
+
+---
+ meta/classes/ubifs-img.bbclass | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/meta/classes/ubifs-img.bbclass b/meta/classes/ubifs-img.bbclass
+index 78926f6..b14b2a8 100644
+--- a/meta/classes/ubifs-img.bbclass
++++ b/meta/classes/ubifs-img.bbclass
+@@ -18,9 +18,9 @@ do_ubifs_image() {
+ 
+     image_do_mounts
+ 
+-    # Create ubifs image using buildchroot tools
+-    sudo chroot ${BUILDCHROOT_DIR} /usr/sbin/mkfs.ubifs ${MKUBIFS_ARGS} \
+-                -r '${PP_ROOTFS}' '${PP_DEPLOY}/${UBIFS_IMAGE_FILE}'
++    # Create ubifs image
++    # Buildchroot is not using here because of upstream issue on 32-bit platforms
++    sudo mkfs.ubifs ${MKUBIFS_ARGS} -r '${IMAGE_ROOTFS}' '${DEPLOY_DIR_IMAGE}/${UBIFS_IMAGE_FILE}'
+ }
+ 
+ addtask ubifs_image before do_image after do_image_tools
+-- 
+2.20.1
+

@@ -16,3 +16,17 @@ do_copy_boot_files_append() {
         ln -sf ${KERNEL_IMAGE} ${DEPLOY_DIR_IMAGE}/${KERNEL_IMAGETYPE}
     fi
 }
+
+IMAGE_INSTALL += " \
+    ${@bb.utils.contains("DISTRO_FEATURES", "systemd", "systemd-machine-units", "",d)} \
+"
+
+IMAGE_PREINSTALL += " \
+    iputils-ping \
+"
+
+rootfs_setup_resolved() {
+    sudo -E chroot ${ROOTFSDIR} sh -c 'systemctl preset systemd-resolved.service && \
+        ln -sr /run/systemd/resolve/resolv.conf /etc/resolv.conf'
+}
+ROOTFS_POSTPROCESS_COMMAND += "rootfs_setup_resolved"

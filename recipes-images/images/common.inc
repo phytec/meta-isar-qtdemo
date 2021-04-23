@@ -18,6 +18,7 @@ do_copy_boot_files_append() {
 }
 
 IMAGE_INSTALL += " \
+    new-hostname \
     ${@bb.utils.contains("DISTRO_FEATURES", "systemd", "systemd-machine-units", "",d)} \
 "
 

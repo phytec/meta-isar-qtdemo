@@ -31,3 +31,8 @@ rootfs_setup_resolved() {
         ln -sr /run/systemd/resolve/resolv.conf /etc/resolv.conf'
 }
 ROOTFS_POSTPROCESS_COMMAND += "rootfs_setup_resolved"
+
+rootfs_enable_root_ssh () {
+    sudo sed -i "s/^#*PermitRootLogin[-A-Za-z=/ ]*$/PermitRootLogin yes/g" ${IMAGE_ROOTFS}/etc/ssh/sshd_config
+}
+ROOTFS_POSTPROCESS_COMMAND += "rootfs_enable_root_ssh"

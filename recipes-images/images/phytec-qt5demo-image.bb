@@ -10,6 +10,7 @@ CONFLICT_DISTRO_FEATURES_mx6 = "x11 wayland"
 IMAGE_INSTALL += "\
     packagegroup-base \
     packagegroup-gstreamer \
+    phytec-qtdemo \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'weston-init', '', d)} \
     qtbase-machine-config \
 "
@@ -22,7 +23,6 @@ IMAGE_PREINSTALL += "\
 #TODO: implement packages
 #IMAGE_INSTALL += "\
 #    qt5-opengles2-test \
-#    phytec-qtdemo \
 #"
 
 LICENSE = "MIT"

@@ -11,6 +11,7 @@ IMAGE_INSTALL += "\
     packagegroup-base \
     packagegroup-gstreamer \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'weston-init', '', d)} \
+    qtbase-machine-config \
 "
 
 IMAGE_PREINSTALL += "\

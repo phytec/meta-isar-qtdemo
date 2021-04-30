@@ -1,0 +1,32 @@
+DESCRIPTION = "Machine specific qtbase configuration"
+
+inherit dpkg-raw
+
+SRC_URI = "\
+    file://qtLauncher \
+    file://eglfs_kms.config \
+    file://profile \
+"
+
+SRC_URI_append_mx6 = "file://res-touchscreen.rules"
+
+DEBIAN_DEPENDS = "libts-bin, libts-dev"
+
+QT_QPA_PLATFORM ??= "${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'wayland', 'eglfs', d)}"
+
+do_install() {
+	install -d ${D}/etc
+	install -m 0644 ${WORKDIR}/eglfs_kms.config ${D}/etc/eglfs_kms.config
+
+	install -d ${D}/usr/bin
+	install -m 0755 ${WORKDIR}/qtLauncher ${D}/usr/bin/qtLauncher
+	sed -i 's,@QT_QPA_PLATFORM@,${QT_QPA_PLATFORM},g' ${D}/usr/bin/qtLauncher
+	sed -i 's,@QT_QPA_EGLFS_KMS_CONFIG@,/etc/eglfs_kms.config,g' ${D}/usr/bin/qtLauncher
+
+	install -Dm0755 ${WORKDIR}/profile ${D}/etc/profile.d/weston.sh
+}
+
+do_install_append_mx6() {
+        install -d ${D}/usr/lib/udev/rules.d
+        install -m 0644 ${WORKDIR}/res-touchscreen.rules ${D}/usr/lib/udev/rules.d/
+}

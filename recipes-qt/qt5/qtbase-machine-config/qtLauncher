@@ -22,6 +22,7 @@ if [ "$?" != "0" ]; then
     export QT_GSTREAMER_PLAYBIN_AUDIOSINK=fakesink
 fi
 
+export DISPLAY=:0.0
 export QT_QPA_PLATFORM=@QT_QPA_PLATFORM@
 export QT_QPA_EGLFS_ALWAYS_SET_MODE="1"
 export QT_QPA_EGLFS_KMS_CONFIG=@QT_QPA_EGLFS_KMS_CONFIG@

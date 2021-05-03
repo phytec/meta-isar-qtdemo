@@ -12,7 +12,8 @@ SRC_URI_append_mx6 = "file://res-touchscreen.rules"
 
 DEBIAN_DEPENDS = "libts-bin, libts-dev"
 
-QT_QPA_PLATFORM ??= "${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'wayland', 'eglfs', d)}"
+# Use xwayland for wayland platforms
+QT_QPA_PLATFORM ??= "${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'xcb', 'eglfs', d)}"
 
 do_install() {
 	install -d ${D}/etc

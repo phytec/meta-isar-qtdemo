@@ -26,6 +26,8 @@ IMAGE_PREINSTALL += " \
     iputils-ping \
 "
 
+# Isar removes resolv.conf symlink during build
+# We need to renew it until fixing upstream
 rootfs_setup_resolved() {
     sudo -E chroot ${ROOTFSDIR} sh -c 'systemctl preset systemd-resolved.service && \
         ln -sr /run/systemd/resolve/resolv.conf /etc/resolv.conf'

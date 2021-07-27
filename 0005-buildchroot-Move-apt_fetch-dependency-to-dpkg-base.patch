@@ -1,0 +1,53 @@
+From f2b5385b100e7f5b834efad00a4e8599137786c5 Mon Sep 17 00:00:00 2001
+From: Anton Mikanovich <amikan@ilbers.de>
+Date: Wed, 14 Jul 2021 09:52:33 +0300
+Subject: [PATCH 5/7] buildchroot: Move apt_fetch dependency to dpkg-base
+
+Buildchroot should not care about all the task depends on it, so we
+should move do_apt_fetch dependency to the place where this task was
+implemented.
+
+Signed-off-by: Anton Mikanovich <amikan@ilbers.de>
+---
+ meta/classes/buildchroot.bbclass | 3 +--
+ meta/classes/dpkg-base.bbclass   | 3 +++
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/meta/classes/buildchroot.bbclass b/meta/classes/buildchroot.bbclass
+index 0db6ef9..f77e4f0 100644
+--- a/meta/classes/buildchroot.bbclass
++++ b/meta/classes/buildchroot.bbclass
+@@ -5,7 +5,7 @@
+ 
+ ISAR_CROSS_COMPILE ??= "0"
+ 
+-# Add dependency from the correct buildchroot: host or target
++# Choose the correct buildchroot: host or target
+ python __anonymous() {
+     mode = d.getVar('ISAR_CROSS_COMPILE', True)
+     distro_arch = d.getVar('DISTRO_ARCH')
+@@ -17,7 +17,6 @@ python __anonymous() {
+         dep = "buildchroot-host:do_build"
+         rootfs = d.getVar('BUILDCHROOT_HOST_DIR', True)
+ 
+-    d.setVarFlag('do_apt_fetch', 'depends', dep)
+     d.setVar('BUILDCHROOT_DEP', dep)
+     d.setVar('BUILDCHROOT_DIR', rootfs)
+ }
+diff --git a/meta/classes/dpkg-base.bbclass b/meta/classes/dpkg-base.bbclass
+index ed162b3..ec8fbc1 100644
+--- a/meta/classes/dpkg-base.bbclass
++++ b/meta/classes/dpkg-base.bbclass
+@@ -89,6 +89,9 @@ python do_apt_fetch() {
+ addtask apt_fetch after do_unpack before do_apt_unpack
+ do_apt_fetch[lockfiles] += "${REPO_ISAR_DIR}/isar.lock"
+ 
++# Add dependency from the correct buildchroot: host or target
++do_apt_fetch[depends] = "${BUILDCHROOT_DEP}"
++
+ unpack_apt() {
+     for uri in "${SRC_APT}"; do
+         sudo -E chroot --userspec=$( id -u ):$( id -g ) ${BUILDCHROOT_DIR} \
+-- 
+2.20.1
+

@@ -1,6 +1,6 @@
-= Yogurt Isar Meta Layer
+= QTDemo Isar Meta Layer
 
-This is custom distribution layer based on Isar for PHYTEC Boards.
+This is custom Debian distribution layer based on Isar for PHYTEC Boards.
 
 .Supported images
 * phytec-headless-image

@@ -1,0 +1,17 @@
+From cbc1cc79c255c480417ea719855163a6fa141577 Mon Sep 17 00:00:00 2001
+From: Anton Mikanovich <amikan@ilbers.de>
+Date: Wed, 6 Oct 2021 17:59:20 +0200
+Subject: [PATCH] TMP: Disable cmake
+
+---
+ CMakeLists.txt => CMakeLists_backup.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ rename CMakeLists.txt => CMakeLists_backup.txt (100%)
+
+diff --git a/CMakeLists.txt b/CMakeLists_backup.txt
+similarity index 100%
+rename from CMakeLists.txt
+rename to CMakeLists_backup.txt
+-- 
+2.20.1
+

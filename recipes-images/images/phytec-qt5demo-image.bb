@@ -20,6 +20,11 @@ IMAGE_PREINSTALL += "\
     ${@bb.utils.contains('DISTRO_FEATURES', 'x11 wayland', 'xwayland', '', d)} \
 "
 
+IMAGE_INSTALL += "\
+    qtperf \
+    qmlbench \
+"
+
 #TODO: implement packages
 #IMAGE_INSTALL += "\
 #    qt5-opengles2-test \

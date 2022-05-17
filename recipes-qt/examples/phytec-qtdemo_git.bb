@@ -10,7 +10,7 @@ SRC_URI = " \
     file://PhyKitDemo.conf;subdir=git \
     file://postinst \
 "
-SRCREV = "5fd5a82ccee3347be2b9bc61f13ee604b9ae22fd"
+SRCREV = "e9e4b38c0a779d65158ca75bba69780eaa235f40"
 PV = "1.6"
 
 S = "${WORKDIR}/git"
@@ -27,6 +27,10 @@ DEBIAN_DEPENDS += "\
     qml-module-qtquick-layouts, \
     qml-module-qtquick-window2, \
     qml-module-qtqml-models2, \
+    qml-module-qt-labs-folderlistmodel, \
+    qml-module-qtmultimedia, \
+    libqt5multimedia5-plugins, \
+    hunspell-en-us, \
     gstreamer1.0-libav, \
     gstreamer1.0-plugins-base, \
     gstreamer1.0-plugins-good, \

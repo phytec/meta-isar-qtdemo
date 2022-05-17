@@ -25,6 +25,11 @@ IMAGE_INSTALL += "\
     qmlbench \
 "
 
+# Additional tools for testing
+IMAGE_PREINSTALL += "\
+    vim \
+"
+
 #TODO: implement packages
 #IMAGE_INSTALL += "\
 #    qt5-opengles2-test \

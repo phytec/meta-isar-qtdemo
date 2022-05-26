@@ -6,9 +6,9 @@ SRC_URI = "\
     file://qtLauncher \
     file://eglfs_kms.config \
     file://profile \
+    file://tslib.sh \
+    file://res-touchscreen.rules \
 "
-
-SRC_URI_append_mx6 = "file://res-touchscreen.rules"
 
 DEBIAN_DEPENDS = "libts-bin, libts-dev"
 
@@ -25,9 +25,9 @@ do_install() {
 	sed -i 's,@QT_QPA_EGLFS_KMS_CONFIG@,/etc/eglfs_kms.config,g' ${D}/usr/bin/qtLauncher
 
 	install -Dm0755 ${WORKDIR}/profile ${D}/etc/profile.d/weston.sh
-}
 
-do_install_append_mx6() {
+	install -Dm0755 ${WORKDIR}/tslib.sh ${D}/etc/profile.d/tslib.sh
+
         install -d ${D}/usr/lib/udev/rules.d
         install -m 0644 ${WORKDIR}/res-touchscreen.rules ${D}/usr/lib/udev/rules.d/
 }

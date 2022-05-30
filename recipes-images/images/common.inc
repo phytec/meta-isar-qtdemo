@@ -35,3 +35,9 @@ rootfs_enable_root_ssh () {
     sudo sed -i "s/^#*PermitRootLogin[-A-Za-z=/ ]*$/PermitRootLogin yes/g" ${IMAGE_ROOTFS}/etc/ssh/sshd_config
 }
 ROOTFS_POSTPROCESS_COMMAND += "rootfs_enable_root_ssh"
+
+rootfs_create_machine_id () {
+    # Create machine-id
+    sudo touch ${IMAGE_ROOTFS}/etc/machine-id
+}
+ROOTFS_POSTPROCESS_COMMAND += "${@bb.utils.contains("DISTRO_FEATURES", "systemd", "rootfs_create_machine_id", "", d)}"

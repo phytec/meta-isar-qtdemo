@@ -11,7 +11,7 @@ CONFLICT_DISTRO_FEATURES_mx6 = "x11 wayland"
 IMAGE_INSTALL += "\
     packagegroup-base \
     packagegroup-gstreamer \
-    phytec-qtdemo_git_gnome \
+    phytec-qtdemo-gnome \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'weston-init_gnome', '', d)} \
     qtbase-machine-config \
 "

@@ -12,7 +12,7 @@ IMAGE_INSTALL += "\
     packagegroup-base \
     packagegroup-gstreamer \
     phytec-qtdemo-gnome \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'weston-init_gnome', '', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'weston-init-gnome', '', d)} \
     qtbase-machine-config \
 "
 

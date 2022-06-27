@@ -12,13 +12,13 @@ IMAGE_INSTALL += "\
     packagegroup-base \
     packagegroup-gstreamer \
     phytec-qtdemo \
-    #${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'weston-init', '', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'weston-init', '', d)} \
     qtbase-machine-config \
 "
 
 IMAGE_PREINSTALL += "\
-    #${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'qtwayland5 weston', '', d)} \
-    #${@bb.utils.contains('DISTRO_FEATURES', 'x11 wayland', 'xwayland', '', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'qtwayland5 weston', '', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'x11 wayland', 'xwayland', '', d)} \
     gnome \
 "
 

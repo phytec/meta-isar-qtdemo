@@ -4,10 +4,13 @@
 DESCRIPTION = "This is a demo software showing some Qt Features"
 HOMEPAGE = "http://www.phytec.de"
 
+FILESEXTRAPATHS_prepend := "${THISDIR}/phytec-qtdemo:"
+
 SRC_URI = " \
     git://git.phytec.de/phyRDKDemo;protocol=https \
     file://phytec-qtdemo.service;subdir=git \
     file://PhyKitDemo.conf;subdir=git \
+    file://postinst \
 "
 SRCREV = "e9e4b38c0a779d65158ca75bba69780eaa235f40"
 PV = "1.6"
@@ -55,4 +58,3 @@ EOF
 
     ln -sfr ${S}/phytec-qtdemo ${S}/QtDemo
 }
-

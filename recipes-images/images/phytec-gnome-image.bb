@@ -17,6 +17,7 @@ IMAGE_INSTALL += "\
 "
 
 IMAGE_PREINSTALL += "\
+    systemd-timesyncd \
     gnome \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'qtwayland5 weston', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'x11 wayland', 'xwayland', '', d)} \

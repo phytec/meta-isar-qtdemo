@@ -18,6 +18,7 @@ IMAGE_INSTALL += " \
 "
 
 IMAGE_PREINSTALL += " \
+    systemd-timesyncd \
     tzdata \
 "
 

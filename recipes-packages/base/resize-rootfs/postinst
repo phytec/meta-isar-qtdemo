@@ -1,0 +1,3 @@
+#!/bin/sh
+chmod +x /etc/resize-rootfs/resize-rootfs.sh
+systemctl enable resize-rootfs.service

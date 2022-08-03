@@ -13,6 +13,7 @@ IMAGE_INSTALL += "\
     phytec-qtdemo \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'weston-init', '', d)} \
     qtbase-machine-config \
+    resize-rootfs \
 "
 
 IMAGE_PREINSTALL += "\

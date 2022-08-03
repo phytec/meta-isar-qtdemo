@@ -1,0 +1,11 @@
+[Unit]
+Description=resize rootfs to max
+ConditionPathExists=/etc/resize-rootfs/resize-rootfs.sh
+ 
+[Service]
+Restart=always
+RestartSec=3
+ExecStart=/etc/resize-rootfs/resize-rootfs.sh
+ 
+[Install]
+WantedBy=multi-user.target

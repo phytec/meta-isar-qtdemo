@@ -8,6 +8,7 @@ IMAGE_FEATURES += "splash ssh-server-openssh"
 IMAGE_INSTALL += "\
     packagegroup-base \
     packagegroup-gstreamer \
+    swap \
 "
 
 IMAGE_PREINSTALL += "\

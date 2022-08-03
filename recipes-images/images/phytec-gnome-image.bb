@@ -14,6 +14,7 @@ IMAGE_INSTALL += "\
     phytec-qtdemo-gnome \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'weston-init-gnome', '', d)} \
     qtbase-machine-config \
+    swap \
 "
 
 IMAGE_PREINSTALL += "\

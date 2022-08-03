@@ -1,0 +1,11 @@
+[Unit]
+Description=Create a swap file
+ConditionPathExists=/etc/phytec-swap/swap.sh
+ 
+[Service]
+Restart=always
+RestartSec=3
+ExecStart=/etc/phytec-swap/swap.sh
+ 
+[Install]
+WantedBy=multi-user.target

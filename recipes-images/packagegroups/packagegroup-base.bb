@@ -28,5 +28,6 @@ DEBIAN_DEPENDS = "\
     \
     ${@bb.utils.contains('DISTRO_FEATURES', 'nfs', 'rpcbind', '', d)}, \
     ${@bb.utils.contains('DISTRO_FEATURES', 'ppp', 'ppp', '', d)}, \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'systemd-timesyncd', '', d)}, \
     ${@bb.utils.contains('DISTRO_FEATURES', 'zeroconf', 'avahi-daemon, libnss-mdns', '', d)}, \
     "

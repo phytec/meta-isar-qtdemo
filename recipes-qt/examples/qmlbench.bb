@@ -1,5 +1,5 @@
 SRC_URI = " \
-    git://github.com/CrimsonAS/qmlbench;protocol=https \
+    git://github.com/CrimsonAS/qmlbench;protocol=https;branch=dev \
     file://0001-TMP-Disable-cmake.patch \
 "
 SRCREV = "6d298da7cda85b35aa22c68aac55fdb6513e68eb"

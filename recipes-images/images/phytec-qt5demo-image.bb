@@ -22,7 +22,6 @@ IMAGE_PREINSTALL += "\
 
 IMAGE_INSTALL += "\
     qtperf \
-    qmlbench \
 "
 
 # Additional tools for testing
